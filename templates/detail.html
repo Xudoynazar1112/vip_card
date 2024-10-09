@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Product detail{% endblock %}
+{% block content %}
+    <h1 class="page-title">{{ product.name | capfirst }}</h1>
+    <section id="product-detail">
+        <img class="product-image" src="{{ product.image.url }}" alt="image">
+        <div class="detail">
+            <h4>{{ product.name | capfirst }}</h4>
+            <p>{{ product.definition }}</p>
+            <h5>Bizda qoldi: {{ product.stock }}ta</h5>
+        </div>
+    </section>
+{% endblock %}

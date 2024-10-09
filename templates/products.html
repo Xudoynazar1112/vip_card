@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Product{% endblock %}
+{% block content %}
+    <h1 class="page-title">Products</h1>
+    <section id="products">
+        {% for product in products_list %}
+            <div class="card" style="width: 18rem;">
+                <i class="fa-solid fa-heart icon"></i>
+                <img class="detail-image" src="{{ product.image.url }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.definition | truncatewords:5 }}</p>
+                    <a href="{% url 'detail' product.id %}" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
