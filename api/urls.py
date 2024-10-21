@@ -4,7 +4,7 @@ from drf_yasg.generators import OpenAPISchemaGenerator
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
-from .views import ProductListAPIView
+from .views import ProductListAPIView, ProductDetailRetrieveAPIView, ProductDetailDeleteAPIView
 
 
 class JWTSchemaGenerator(OpenAPISchemaGenerator):
@@ -34,6 +34,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('api/v1/', ProductListAPIView.as_view(), name='product-list'),
+    path('api/v1/detail-edit/', ProductDetailRetrieveAPIView.as_view(), name='product-edit'),
+    path('api/v1/detail-delete/', ProductDetailDeleteAPIView.as_view(), name='product-delete'),
     path('api/v1/custom_auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/custom_auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
