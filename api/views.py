@@ -1,4 +1,4 @@
-from rest_framework.generics import ListCreateAPIView, DestroyAPIView, UpdateAPIView
+from rest_framework.generics import ListCreateAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny
 
 from product.models import Product
@@ -11,7 +11,12 @@ class ProductListAPIView(ListCreateAPIView):
     permission_classes = [AllowAny]
 
 
-class ProductDetailRetrieveAPIView(UpdateAPIView):
+class ProductDetailRetrieveAPIView(RetrieveAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+class ProductDetailUpdateAPIView(UpdateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
